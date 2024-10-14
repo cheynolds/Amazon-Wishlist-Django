@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amazon Wishlist</title>
+  </head>
+  <body>
+    <h1>Your Wishlist</h1>
+    <ul>
+      {% for item in items %}
+      <li>
+        <a href="{{ item.url }}">{{ item.title }}</a> - ${{ item.price }}
+        <p>{{ item.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

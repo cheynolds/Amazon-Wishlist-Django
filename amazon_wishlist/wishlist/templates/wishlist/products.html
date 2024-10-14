@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Products</h1>
+
+<!-- Product Grid Container -->
+<div class="product-grid" id="product-grid">
+	{% for product in products %}
+		{% include 'wishlist/product_card.html' %}
+	{% empty %}
+		<p>No products available.</p>
+	{% endfor %}
+</div>
+
+<!-- Loader -->
+<div id="loading" style="display:none;">
+	<p>Loading more products...</p>
+</div>
+
+<!-- Go to Top Button -->
+<button id="goToTopBtn" title="Go to Top">Top</button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>  <!-- Include main.js here -->
+{% endblock %}

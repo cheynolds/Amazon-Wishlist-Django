@@ -1,0 +1,19 @@
+<div>
+    <p><strong>Price:</strong> ${{ product.price }}</p>
+    <p><strong>Price Added:</strong> ${{ product.price_added|default:"N/A" }}</p>
+    <p><strong>Last Price Change:</strong> ${{ product.last_pricechange|default:"N/A" }} ({{ product.last_pricechange_percent|default:"N/A" }}%)</p>
+    <p><strong>Status:</strong> {{ product.stock_status }}</p>
+    <p><strong>Reviews:</strong> {{ product.reviews|default:"N/A" }}</p>
+    <p><strong>Rating:</strong> {{ product.stars|default:"N/A" }} stars</p>
+    <p><strong>Pattern:</strong> {{ product.pattern|default:"N/A" }}</p>
+    <p><strong>Style:</strong> {{ product.style|default:"N/A" }}</p>
+    <p><strong>Wishlist:</strong> {{ product.wishlist_name|default:"N/A" }}</p>
+    <p><strong>Date Added:</strong> {{ product.date_added|date:"Y-m-d"|default:"N/A" }}</p>
+    <p><strong>Last Price Check:</strong> {{ product.last_checkdate|date:"Y-m-d"|default:"N/A" }}</p>
+    <div class="product-button-container">
+        <a href="{{ product.product_link }}" target="_blank">View on Amazon</a>
+        {% if product.affiliate_link %}
+            <a href="{{ product.affiliate_link }}" target="_blank">Affiliate Link</a>
+        {% endif %}
+    </div>
+</div>

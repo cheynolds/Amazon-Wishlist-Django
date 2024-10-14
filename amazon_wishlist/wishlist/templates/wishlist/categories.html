@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Wishlists</h1>
+<div class="wishlist-grid">
+  {% for wishlist in wishlists %}
+  <div class="wishlist-card">
+    <a href="{% url 'wishlist_products' wishlist_name=wishlist %}">
+      <h3>{{ wishlist }}</h3>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% for product in products %}
+	{% include 'wishlist/product_card.html' %}
+{% empty %}
+	<p>No products available.</p>
+{% endfor %}

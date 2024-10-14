@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block content %}
+	<h1>{{ product.title }}</h1>
+
+	<!-- Product Detail Grid -->
+	<div class="product-detail-container">
+		<!-- Product Information Box -->
+		<div class="product-detail-box">
+			<img src="{{ product.image_url }}" alt="{{ product.title }}" />
+			<p><strong>Price:</strong> ${{ product.price }}</p>
+			<p><strong>Price Added:</strong> ${{ product.price_added|default:"N/A" }}</p>
+			<p><strong>Last Price Change:</strong> ${{ product.last_pricechange|default:"N/A" }} ({{ product.last_pricechange_percent|default:"N/A" }}%)</p>
+			<p><strong>Status:</strong> {{ product.stock_status }}</p>
+			<p><strong>Reviews:</strong> {{ product.reviews|default:"N/A" }}</p>
+			<p><strong>Rating:</strong> {{ product.stars|default:"N/A" }} stars</p>
+			<p><strong>Pattern:</strong> {{ product.pattern|default:"N/A" }}</p>
+			<p><strong>Style:</strong> {{ product.style|default:"N/A" }}</p>
+			<p><strong>Wishlist:</strong> {{ product.wishlist_name|default:"N/A" }}</p>
+			<p><strong>Date Added:</strong> {{ product.date_added|date:"Y-m-d"|default:"N/A" }}</p>
+			<p><strong>Last Price Check:</strong> {{ product.last_checkdate|default:"N/A" }}</p>
+		</div>
+
+		<!-- Chart Section -->
+		<div class="product-chart-box">
+			<h2>Pricing History</h2>
+			<canvas id="priceHistoryChart" width="400" height="200"></canvas>
+		</div>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+	const historyData = {{ history_data|safe }};
+	initializePriceHistoryChart(historyData);
+</script>
+{% endblock %}
+
+
+
+
+
+
